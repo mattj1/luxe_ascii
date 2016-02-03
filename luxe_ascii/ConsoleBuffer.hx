@@ -65,7 +65,7 @@ class ConsoleBuffer {
         bg_tex = new Texture({id:'bg_tex', width:bg_tex_width, height:bg_tex_height, pixels:bg_pixels, format:GL.RGB});
 
         qg = new QuadGeometry({
-            x:0, y:0, w:buffer_width * 8, h: buffer_height * 14,
+            x:0, y:0, w:buffer_width * glyph_width, h: buffer_height * glyph_height,
             texture: bg_tex,
             batcher : Luxe.renderer.batcher
         });
@@ -80,11 +80,8 @@ class ConsoleBuffer {
 	function generate_tiles() {
 		map_tiles = new Array< Array<MapTile> >();
 
-        var tile_size_w = 8;
-        var tile_size_h = 14;
-
-        var tilecx : Int = Math.ceil(Luxe.screen.w / tile_size_w);
-        var tilecy : Int = Math.ceil(Luxe.screen.h / tile_size_h);
+        var tilecx:Int = buffer_width; // Int = Math.ceil(Luxe.screen.w / tile_size_w);
+        var tilecy:Int = buffer_height; //Int = Math.ceil(Luxe.screen.h / tile_size_h);
 
         var color:Color = new Color(1.0, 0.0, 0.0, 1.0);
 
@@ -95,18 +92,14 @@ class ConsoleBuffer {
                 var _quad = 0;
                 var _quad_bg = 0;
 
-                var map_x = _x * tile_size_w;
-                var map_y = _y * tile_size_h;
+                var map_x = _x * glyph_width;
+                var map_y = _y * glyph_height;
 
-                var _tilex = Std.random(16);
-                var _tiley = Std.random(8);
-
-
-                _quad = geom.quad_add({x:map_x, y:map_y, w:tile_size_w, h:tile_size_h});
+                _quad = geom.quad_add({x:map_x, y:map_y, w:glyph_width, h:glyph_height});
 
                 // geom.quad_alpha(_quad, 1.0);
 
-                _row.push( { quad:_quad, quad_bg:_quad_bg, tilex:_tilex, tiley:_tiley } );
+                _row.push( { quad:_quad, quad_bg:_quad_bg, tilex:0, tiley:0 } );
 
             } //_x
 
