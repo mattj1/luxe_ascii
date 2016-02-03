@@ -1,0 +1,16 @@
+
+{
+	"name": "luxe_ascii",
+	"tags": [
+	],
+	"description": "ASCII Rendering for Luxe",
+	"contributors": [
+		"mattj1"
+	],
+	"releasenote": "First haxelib release.",
+	"version": "0.0.0",
+	"url": "http://github.com/mattj1/luxe-ascii/",
+	"dependencies": {
+		"luxe": "*"
+	}
+}
