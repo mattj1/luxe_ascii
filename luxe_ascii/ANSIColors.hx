@@ -3,9 +3,10 @@ package luxe_ascii;
 import phoenix.Color;
 
 class ANSIColors {
-	private static var colors:Array<Color>;// = new Array<Color>();
 
-	public static function color(c:Int) {
+	private static var colors:Array<Color>;
+
+	public static function color(c:Int):Color {
 		if(colors == null) {
 			colors = new Array<Color>();
 

@@ -2,7 +2,6 @@ package luxe_ascii;
 
 import luxe.Color;
 import snow.api.buffers.*;
-import phoenix.Rectangle;
 
 class TextBuffer {
 	

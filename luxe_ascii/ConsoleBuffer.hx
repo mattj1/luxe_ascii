@@ -23,8 +23,10 @@ class ConsoleBuffer {
 	private var bg_tex_width = 128;
     private var bg_tex_height = 128;
 
-    private var tile_texture_w = 8;
-    private var tile_texture_h = 14;
+    private var glyph_width = 8;
+    private var glyph_height = 14;
+
+    private var glyph_file_columns = 16;
 
     private var geom : QuadPackGeometry;
     private var qg : QuadGeometry;
@@ -34,9 +36,19 @@ class ConsoleBuffer {
 
     private var map_tiles : Array< Array<MapTile> >;
 
+    private var rect:Rectangle;
+
 	public function new( _options : ConsoleBufferOptions ) {
+
 		this.buffer_width = _options.width;
 		this.buffer_height = _options.height;
+
+        this.glyph_width = _options.glyph_width;
+        this.glyph_height = _options.glyph_height;
+
+        this.glyph_file_columns = _options.glyph_file_columns;
+
+        rect = new Rectangle();
 
 	    geom = new phoenix.geometry.QuadPackGeometry({
             //texture : Luxe.resources.texture('assets/tileset.png'),
@@ -133,17 +145,21 @@ class ConsoleBuffer {
 
     			var tile:MapTile = map_tiles[y][x];
 
-    			tile.tilex = char % 16;
-        		tile.tiley = (char - char%16) >> 4;
+    			tile.tilex = char % glyph_file_columns;
+        		tile.tiley = Std.int((char - char % glyph_file_columns) / glyph_file_columns);
 
-        		geom.quad_uv(tile.quad, new Rectangle((tile.tilex * tile_texture_w),(tile.tiley * tile_texture_h), tile_texture_w, tile_texture_h) );
+                rect.x = (tile.tilex * glyph_width);
+                rect.y = (tile.tiley * glyph_height);
+                rect.w = glyph_width;
+                rect.h = glyph_height;
+
+        		geom.quad_uv(tile.quad, rect);
 
         		geom.quad_color(tile.quad, d.fg);
 
     			bg_pixels[bg_offs ++] = d.bg[0];
     			bg_pixels[bg_offs ++] = d.bg[1];
     			bg_pixels[bg_offs ++] = d.bg[2];
-
 
     			ch_offs ++;
     		}
