@@ -43,21 +43,14 @@ class TextBuffer {
 		if(x < 0 || y < 0 || x >= width || y >= height)
 			return;
 		
-		var c:Color = data[y * width + x].fg;
-		c.r = color.r;
-		c.g = color.g;
-		c.b = color.b;
+		data[y * width + x].fg = color;
 	}
 
 	public function set_bg_color(x:Int, y:Int, color:Color) {
 		if(x < 0 || y < 0 || x >= width || y >= height)
 			return;
 		
-		var bg = data[y * width + x].bg;
-
-		bg[0] = Std.int(color.r * 255);
-		bg[1] = Std.int(color.g * 255);
-		bg[2] = Std.int(color.b * 255);
+		data[y * width + x].set_bg_color(color);
 	}
 
 	// Draw a TextBuffer onto this one at (xPos, yPos), taking into account transparency.
@@ -87,9 +80,7 @@ class TextBuffer {
 				if(src_data.attr & 0x02 != 0)
 					continue;
 
-				dst_data.fg.r = src_data.fg.r;
-				dst_data.fg.g = src_data.fg.g;
-				dst_data.fg.b = src_data.fg.b;
+				dst_data.fg = src_data.fg;
 
 				dst_data.char = src_data.char;
 				dst_data.bg[0] = src_data.bg[0];
