@@ -69,18 +69,21 @@ class TextBuffer {
 		for(y in 0 ... t.height) {
 			dy = y + yPos;
 			
+			// Fit within Y bounds
 			if(dy < 0 || dy >= height)
 				continue;
 
 			for(x in 0 ... t.width) {
 				dx = x + xPos;
 				
+				// Fit within X bounds
 				if(dx < 0 || dx >= width)
 					continue;
 
 				src_data = t.data[y * t.width + x];
 				dst_data = data[dy * width + dx];
 
+				// Don't modify this position if the source data is marked transparent.
 				if(src_data.attr & 0x02 != 0)
 					continue;
 
@@ -140,7 +143,7 @@ class TextBuffer {
 			d.fg.r = 0;
 			d.fg.g = 0;
 			d.fg.b = 0;
-			// d.fg.r = d.fg.g = d.fg.b = 0; // this broke it...
+
 			d.char = 0;
 			d.bg[0] = Std.int(c.r * 255);
 			d.bg[1] = Std.int(c.g * 255);
