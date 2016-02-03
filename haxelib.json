@@ -11,6 +11,7 @@
 	"version": "0.0.0",
 	"url": "http://github.com/mattj1/luxe-ascii/",
 	"dependencies": {
-		"luxe": "*"
+		"luxe": "*",
+		"format": ""
 	}
 }
