@@ -1,0 +1,37 @@
+{
+
+  luxe:{
+    window: {
+      width:640,
+      height:350,
+      title:'luxe_ascii demo',
+      fullscreen:false,
+      resizable:true,
+      borderless:false
+    }
+  },
+
+  project : {
+    name : 'luxe_ascii_demo',
+    version : '1.0.0',
+    author : 'mattj1',
+
+    app : {
+      name : 'luxe_ascii_demo',
+      package : 'com.luxe_ascii.demo'
+    },
+
+    build : {
+      dependencies : {
+        luxe : '*',
+        luxe_ascii : '*',
+      }
+    },
+
+    files : {
+      assets : 'assets/'
+    }
+
+  }
+
+}

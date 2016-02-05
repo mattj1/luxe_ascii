@@ -4,6 +4,12 @@ import luxe.Color;
 import snow.api.buffers.*;
 import luxe.Rectangle;
 
+typedef BlitOptions = {
+	fg:Int,
+	bg:Int,
+	char:Int
+};
+
 class TextBuffer {
 	
 	public var width:Int;
@@ -139,6 +145,27 @@ class TextBuffer {
 			d.bg[0] = Std.int(c.r * 255);
 			d.bg[1] = Std.int(c.g * 255);
 			d.bg[2] = Std.int(c.b * 255);
+		}
+	}
+
+	public function writeString(xPos:Int, yPos:Int, str:String, fg:Color, bg:Color, ?options:BlitOptions) {
+		var x:Int;
+
+		for(i in 0 ... str.length) {
+			x = xPos + i;
+
+			if(x >= width)
+				return;
+
+			var d:CharAttr = data[yPos * width + x];
+
+			d.char = str.charCodeAt(i);
+			
+			if(fg != null)
+				d.fg = fg;
+			
+			if(bg != null)
+				d.set_bg_color(bg);
 		}
 	}
 }

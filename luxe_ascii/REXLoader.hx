@@ -8,9 +8,9 @@ class REXLoader {
         
         var compressed_bytes = Luxe.resources.bytes(path).asset;
 
-        trace("compressed_bytes: " + compressed_bytes);
-        trace("compressed_bytes.bytes: " + compressed_bytes.bytes); // Uint8Array
-        trace(compressed_bytes.bytes.length); // 242
+        // trace("compressed_bytes: " + compressed_bytes);
+        // trace("compressed_bytes.bytes: " + compressed_bytes.bytes); // Uint8Array
+        // trace(compressed_bytes.bytes.length); // 242
         
         var b2 = haxe.io.Bytes.alloc(Std.int(compressed_bytes.bytes.length));
         for(i in 0 ... compressed_bytes.bytes.length) {
