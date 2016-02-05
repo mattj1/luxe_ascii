@@ -23,9 +23,11 @@ class Demo extends State {
         	glyph_file_columns:16
         });      
 
-        // 
+        // Think of this as your "back buffer". Draw everything to this buffer, and when you're done,
+        // update the ConsoleBuffer with it (See below).
         textBuffer = new TextBuffer(80, 25);
 
+        // Example image created in REXPaint.
         sprite_logo = REXLoader.load('assets/xp/luxe_ascii_logo.xp');
 
         stars = new Array<Star>();
@@ -44,7 +46,8 @@ class Demo extends State {
             if(s.x < 0) s.reset();
         }
 
-        // Clear the buffer
+        // Clear the buffer. This is optional, but since this example doesn't draw to every
+        // character in the position, the stars will leave trails when they move.
 		textBuffer.clear(ANSIColors.color(0));
 
 		// Draw the starfield
