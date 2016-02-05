@@ -1,5 +1,5 @@
 # luxe_ascii
-![ASCII Rendering haxelib for the Luxe Engine.](http://i.imgur.com/qvYrR7O.gif)
+![ASCII Rendering haxelib for the Luxe Engine.](http://i.imgur.com/nJukz21.gif)
 
 ASCII Rendering haxelib for the Luxe Engine.
 
