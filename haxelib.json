@@ -12,6 +12,6 @@
 	"url": "http://github.com/mattj1/luxe-ascii/",
 	"dependencies": {
 		"luxe": "*",
-		"format": ""
+		"REXPaintLoaderHaxe": ""
 	}
 }

@@ -19,7 +19,8 @@ class Main extends luxe.Game {
                 { id : "assets/charmaps/cp437_8x14_terminal.png" }
             ],
             bytes : [
-                { id : "assets/xp/luxe_ascii_logo.xp" }
+                { id : "assets/xp/luxe_ascii_logo.xp" },
+                { id : "assets/xp/transparent_test.xp" }
             ]
         });
 

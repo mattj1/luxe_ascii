@@ -7,6 +7,7 @@ class Demo extends State {
     var textBuffer:TextBuffer;
 
     var sprite_logo:TextBuffer;
+    var transparent_test:TextBuffer;
 
     var stars:Array<Star>;
 
@@ -29,6 +30,7 @@ class Demo extends State {
 
         // Example image created in REXPaint.
         sprite_logo = REXLoader.load('assets/xp/luxe_ascii_logo.xp');
+        transparent_test = REXLoader.load('assets/xp/transparent_test.xp');
 
         stars = new Array<Star>();
         for(i in 0 ... 40) {
@@ -58,6 +60,8 @@ class Demo extends State {
 
         // Draw the title image
     	textBuffer.blit(sprite_logo, Std.int(textBuffer.width / 2 - sprite_logo.width / 2), 5);
+
+        textBuffer.blit(transparent_test, 5, 4);
 
     	// Update the displayed geometry
     	consoleBuffer.blit(textBuffer);
