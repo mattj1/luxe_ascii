@@ -42,29 +42,22 @@ class REXLoader {
         return textBuffer;
     }
 
-    
-
 	public static function load(path:String):TextBuffer {
         
-        var compressed_bytes:Uint8Array = Luxe.resources.bytes(path).asset.bytes;
+        var resource = Luxe.resources.bytes(path);
+
+        if(resource == null) {
+            trace("REXLoader: Could not load " + path);
+            return null;
+        }
+
+        var compressed_bytes:Uint8Array = resource.asset.bytes;
         
         var bytes:Bytes = Bytes.alloc(compressed_bytes.length);
         for(i in 0 ... compressed_bytes.length) {
             bytes.set(i, compressed_bytes[i]);
         }
 
-        trace("compressed_bytes: " + compressed_bytes);
-
         return toTextBuffer(REXPaintLoader.loadXP(bytes));
-
-        // var rexPaintFile:REXPaintFile = {};
-        // rexPaintFile.layers = new Array<REXPaintLayer>();
-
-        // var layer:REXPaintLayer;
-
-        // trace("compressed_bytes: " + compressed_bytes);
-        // trace("compressed_bytes.bytes: " + compressed_bytes.bytes); // Uint8Array
-        // trace(compressed_bytes.bytes.length); // 242
-        
 	}
 }

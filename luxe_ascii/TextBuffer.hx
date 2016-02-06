@@ -62,6 +62,10 @@ class TextBuffer {
 	// Draw a TextBuffer onto this one at (xPos, yPos), taking into account transparency.
 	public function blit(t:TextBuffer, xPos:Int, yPos:Int) {
 
+		if(t == null) {
+			return;
+		}
+		
 	 	var dx:Int, dy:Int;
 	 	var src_data:CharAttr, dst_data:CharAttr;
 
