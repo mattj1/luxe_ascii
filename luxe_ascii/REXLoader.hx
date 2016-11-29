@@ -1,7 +1,6 @@
 package luxe_ascii;
 
 import luxe.Color;
-import snow.system.assets.Asset;
 import snow.api.buffers.*;
 
 import haxe.io.Bytes;

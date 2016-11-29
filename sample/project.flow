@@ -1,16 +1,4 @@
 {
-
-  luxe:{
-    window: {
-      width:640,
-      height:350,
-      title:'luxe_ascii demo',
-      fullscreen:false,
-      resizable:true,
-      borderless:false
-    }
-  },
-
   project : {
     name : 'luxe_ascii_demo',
     version : '1.0.0',

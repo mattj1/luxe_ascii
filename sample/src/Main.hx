@@ -3,14 +3,14 @@ import luxe.Input;
 import luxe.Parcel;
 import luxe.ParcelProgress;
 import luxe.States;
-import snow.types.Types;
+import luxe.GameConfig;
 
 class Main extends luxe.Game {
 
-    override function config(config:luxe.AppConfig) {
-
+    override function config(config:GameConfig) {
+        config.window.width = 640;
+        config.window.height = 350;
         return config;
-
     } //config
 
     override function ready() {

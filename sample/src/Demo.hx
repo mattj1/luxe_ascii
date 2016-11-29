@@ -1,4 +1,5 @@
 import luxe.States;
+import luxe.Vector;
 import luxe_ascii.*;
 
 class Demo extends State {
@@ -13,6 +14,8 @@ class Demo extends State {
 
     public function new() {
         super({name:'demo'});
+
+        Luxe.camera.size = new Vector(640,350);
 
         // The ConsoleBuffer manages the geometry that renders the ASCII console
         consoleBuffer = new ConsoleBuffer( { 
